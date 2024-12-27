@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { useRouter } from "next/navigation";
 import {
     handleViewInboundOrders,
     handleViewInventory,
@@ -8,6 +9,13 @@ import {
 } from "./helpers";
 
 export default function SalesRep() {
+    console.log(process.env.NEXT_PUBLIC_SERVER_PUBLIC_URL);
+    const router = useRouter();
+
+    const handleCreateOrder = (type: string) => {
+        router.push(`/createOrder?type=${type}`);
+    };
+
     return (
         <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
             <h1 className="text-2xl font-bold mb-6 text-center text-black">
@@ -20,8 +28,11 @@ export default function SalesRep() {
                     <h2 className="text-lg font-semibold mb-4 text-black">
                         Inbound Orders
                     </h2>
-                    <button className="bg-blue-500 text-black font-medium py-2 px-4 rounded-lg hover:bg-blue-600 focus:ring focus:ring-blue-300 w-full">
-                        Restock Inventory
+                    <button
+                        className="bg-blue-500 text-black font-medium py-2 px-4 rounded-lg hover:bg-blue-600 focus:ring focus:ring-blue-300 w-full"
+                        onClick={() => handleCreateOrder("inbound")}
+                    >
+                        Create Order
                     </button>
                     <button
                         className="mt-4 bg-blue-500 text-black font-medium py-2 px-4 rounded-lg hover:bg-blue-600 focus:ring focus:ring-blue-300 w-full"
@@ -46,7 +57,10 @@ export default function SalesRep() {
                     <h2 className="text-lg font-semibold mb-4 text-black">
                         Outbound Orders
                     </h2>
-                    <button className="bg-blue-500 text-black font-medium py-2 px-4 rounded-lg hover:bg-blue-600 focus:ring focus:ring-blue-300 w-full">
+                    <button
+                        className="bg-blue-500 text-black font-medium py-2 px-4 rounded-lg hover:bg-blue-600 focus:ring focus:ring-blue-300 w-full"
+                        onClick={() => handleCreateOrder("outbound")}
+                    >
                         Create Order
                     </button>
                     <button
