@@ -1,13 +1,25 @@
 "use client"; // Add this at the top of the file
 
 import { useRouter } from "next/navigation";
+import { supabase } from "../utils/supabase/client";
 
 export default function Login() {
     const router = useRouter();
 
-    const handleSubmit = (event: React.FormEvent) => {
+    const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
-        router.push("/salesRep");
+        const email = (event.target as any).email.value;
+        const password = (event.target as any).password.value;
+        console.log(`\n\n email: ${email} \n\n password: ${password} \n\n`);
+        const { error } = await supabase.auth.signInWithPassword({
+            email,
+            password,
+        });
+        if (!error) {
+            router.push("/salesRep");
+        } else {
+            console.error("Error logging in:", error.message);
+        }
     };
 
     return (
@@ -28,10 +40,10 @@ export default function Login() {
                     </label>
                     <input
                         type="text"
-                        id="username"
-                        name="username"
+                        id="email"
+                        name="email"
                         className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-blue-300 text-black"
-                        placeholder="Enter your username"
+                        placeholder="Enter your email"
                         required
                     />
                 </div>
