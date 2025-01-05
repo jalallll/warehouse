@@ -8,7 +8,6 @@ import {
     handleViewOutboundOrders,
 } from "./helpers";
 import { logout } from "../logout/actions";
-// import { createClient } from "../utils/supabase/server";
 
 export default function SalesRep() {
     console.log(process.env.NEXT_PUBLIC_SERVER_PUBLIC_URL);

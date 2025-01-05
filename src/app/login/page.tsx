@@ -1,4 +1,4 @@
-import { loginAdmin } from "./actions";
+import { loginAdmin, signup } from "./actions";
 
 export default function Login() {
     return (
@@ -49,6 +49,15 @@ export default function Login() {
                     formAction={loginAdmin}
                 >
                     Login
+                </button>
+
+                {/* Signup Button */}
+                <button
+                    type="submit"
+                    className="w-full bg-blue-500 text-black font-semibold py-2 px-4 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300"
+                    formAction={signup}
+                >
+                    Sign up
                 </button>
             </form>
         </div>
