@@ -7,6 +7,8 @@ import {
     handleViewInventory,
     handleViewOutboundOrders,
 } from "./helpers";
+import { logout } from "../logout/actions";
+// import { createClient } from "../utils/supabase/server";
 
 export default function SalesRep() {
     console.log(process.env.NEXT_PUBLIC_SERVER_PUBLIC_URL);
@@ -33,6 +35,12 @@ export default function SalesRep() {
                         onClick={() => handleCreateOrder("inbound")}
                     >
                         Create Order
+                    </button>
+                    <button
+                        className="bg-blue-500 text-black font-medium py-2 px-4 rounded-lg hover:bg-blue-600 focus:ring focus:ring-blue-300 w-full"
+                        onClick={logout}
+                    >
+                        logout
                     </button>
                     <button
                         className="mt-4 bg-blue-500 text-black font-medium py-2 px-4 rounded-lg hover:bg-blue-600 focus:ring focus:ring-blue-300 w-full"

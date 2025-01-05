@@ -1,8 +1,5 @@
-"use client"; // Add this at the top of the file
-
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { supabase } from "../utils/supabase/client";
 import { signupAdmin } from "./actions";
 
 export default function Signup() {
